@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1016" />
+  <meta name="description" content="Jednoduchá mobilní appka na evidenci nabití a plateb stravenkové karty." />
+  <title>Stravenky</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <div class="eyebrow">Přehled karty</div>
+        <h1 class="title">💳 Stravenky</h1>
+        <p class="sub">Rychlej přehled nabití, plateb a zůstatku.</p>
+      </div>
+    </header>
+
+    <section class="card balance-card">
+      <div class="balance-label">Aktuální zůstatek</div>
+      <div id="balance" class="balance-value">0 Kč</div>
+
+      <div class="mini-grid">
+        <div class="mini">
+          <div class="label">Celkem nabito</div>
+          <div id="topupTotal" class="value green">0 Kč</div>
+        </div>
+        <div class="mini">
+          <div class="label">Celkem utraceno</div>
+          <div id="paymentTotal" class="value red">0 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="topup" type="button">Nabití</button>
+      <button class="tab" data-tab="payment" type="button">Platba</button>
+    </div>
+
+    <section class="card panel active" id="panel-topup">
+      <h2>Přidat nabití</h2>
+      <div class="form-grid">
+        <label class="field">
+          <span>Částka</span>
+          <input type="number" id="topupAmount" inputmode="decimal" placeholder="Např. 1500" />
+        </label>
+        <button class="btn primary" id="addTopupBtn" type="button">Přidat nabití</button>
+      </div>
+    </section>
+
+    <section class="card panel" id="panel-payment">
+      <h2>Přidat platbu</h2>
+      <div class="form-grid">
+        <label class="field">
+          <span>Za co</span>
+          <input type="text" id="paymentName" placeholder="Např. oběd, Lidl, bageta" />
+        </label>
+        <label class="field">
+          <span>Částka</span>
+          <input type="number" id="paymentAmount" inputmode="decimal" placeholder="Např. 159" />
+        </label>
+        <button class="btn primary" id="addPaymentBtn" type="button">Přidat platbu</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>Historie</h2>
+          <div class="muted">Nejnovější položky nahoře</div>
+        </div>
+        <button class="btn ghost small" id="resetBtn" type="button">Reset</button>
+      </div>
+      <div id="history" class="list empty-state">Zatím tu nic není.</div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
